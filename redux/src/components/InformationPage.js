@@ -11,7 +11,6 @@ const InformationPage = () => {
       <h2>Information</h2>
       <p>Name: {name}</p>
       <p>Age: {age}</p>
-      <p>Numbers: {numbers.join(', ')}</p>
     </div>
   );
 };
