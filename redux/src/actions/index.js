@@ -12,6 +12,13 @@ export const setName = (name) => {
       payload: age,
     };
   };
+
+  export const setNum = (num) => {
+    return {
+      type: 'SET_NUM',
+      payload: num,
+    };
+  };
   
   export const addNumber = (number) => {
     return {

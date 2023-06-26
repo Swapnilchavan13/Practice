@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setName, setAge } from '../actions';
+import { useSelector } from 'react-redux';
+
+import { setName, setAge, setNum } from '../actions';
 
 const FormPage = () => {
   const dispatch = useDispatch();
   const [name, setNameValue] = useState('');
   const [age, setAgeValue] = useState('');
+  const num = useSelector((state) => state.num)
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(setName(name));
     dispatch(setAge(age));
+    dispatch(setNum(num));
+
     setNameValue('');
     setAgeValue('');
   };
@@ -21,12 +27,12 @@ const FormPage = () => {
       <form onSubmit={handleSubmit}>
         <label>
           Name:
+        </label>
           <input
             type="text"
             value={name}
             onChange={(e) => setNameValue(e.target.value)}
           />
-        </label>
         <br />
         <label>
           Age:
@@ -38,6 +44,8 @@ const FormPage = () => {
         </label>
         <br />
         <button type="submit">Submit</button>
+        {/* <button onClick={()=>dispatch(setNum(num))}>Add</button> */}
+
       </form>
     </div>
   );
