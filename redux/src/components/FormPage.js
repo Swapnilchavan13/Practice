@@ -44,7 +44,7 @@ const FormPage = () => {
         </label>
         <br />
         <button type="submit">Submit</button>
-        {/* <button onClick={()=>dispatch(setNum(num))}>Add</button> */}
+        <button onClick={()=>dispatch(setNum(num))}>Add</button>
 
       </form>
     </div>
