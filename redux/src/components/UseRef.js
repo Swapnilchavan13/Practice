@@ -10,7 +10,7 @@ function Timer() {
     return () => {
       stopTimer();
     };
-  }, []);
+  }, [intervalRef]);
 
   const startTimer = () => {
     intervalRef.current = setInterval(() => {
