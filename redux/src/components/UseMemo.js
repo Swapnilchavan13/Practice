@@ -7,7 +7,7 @@ const ExpensiveComponent = () => {
     // Simulate an expensive calculation
     console.log('Calculating...');
     let result = 0;
-    for (let i = 0; i < 1000000000; i++) {
+    for (let i = 0; i < 100; i++) {
       result += i;
     }
     return result;
