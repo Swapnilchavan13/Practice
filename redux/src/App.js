@@ -18,7 +18,7 @@ const App = () => {
       <InformationPage />
       <Timer />
       <ExpensiveComponent />
-      <ParentComponent />
+      {/* <ParentComponent /> */}
     </Provider>
   );
 };
