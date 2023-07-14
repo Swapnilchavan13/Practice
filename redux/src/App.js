@@ -8,11 +8,13 @@ import Timer from './components/UseRef';
 import ExpensiveComponent from './components/UseMemo';
 import ParentComponent from './components/UseContext';
 import Appcon from './components/UseContext';
+import ExampleComponent from './components/Pages/Exaplle';
 
 
 const App = () => {
   return (
     <Provider store={store}>
+      <ExampleComponent />
       <Appcon />
       <FormPage />
       <InformationPage />
