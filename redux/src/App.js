@@ -1,11 +1,9 @@
 import React from 'react';
-import Loader from './Component/Loader';
-
+import ImageEditor from './Component/Image';
 const App = () => {
   return (
     <>
-     <Loader />
-   <h1>Hello</h1>
+<ImageEditor />    
     </>
    
   );
