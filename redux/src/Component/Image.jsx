@@ -89,7 +89,7 @@ const ImageEditor = () => {
             src={imageElement.src}
             alt={`Uploaded ${index + 1}`}
             style={{ maxWidth: "300px" }}
-            draggable={index === 1} // Allow dragging only for the second image
+            draggable={index === 1} 
             onDragStart={handleCollageDragStart}
             onDrag={handleCollageDrag}
           />
