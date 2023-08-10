@@ -1,40 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+function LoginPage() {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
 
-  const handleLogin = () => {
-    // Perform login logic here
-    console.log('Logging in with:', username, password);
-  };
+    const [loginStatus, setLoginStatus] = useState('');
+    const [users, setUsers] = useState([]);
 
-  return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form>
-        <div className="input-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+    useEffect(() => {
+        axios.get('http://localhost:8080/user')
+            .then(response => {
+                setUsers(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    }, []);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+
+        const user = users.find(user => user.email === formData.email);
+
+        if (!user || user.password !== formData.password) {
+            setLoginStatus('Invalid email or password');
+        } else {
+            setLoginStatus('Login successful');
+        }
+    };
+
+    return (
+        <div>
+            <h1>Login</h1>
+            <form onSubmit={handleLogin}>
+                <label htmlFor="email">Email:</label>
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required /><br /><br />
+
+                <label htmlFor="password">Password:</label>
+                <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required /><br /><br />
+
+                <button type="submit">Login</button>
+            </form>
+            <p>{loginStatus}</p>
         </div>
-        <div className="input-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="button" onClick={handleLogin}>Login</button>
-      </form>
-    </div>
-  );
-};
+    );
+}
 
-export default Login;
+export default LoginPage;

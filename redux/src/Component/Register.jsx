@@ -1,40 +1,52 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const Register = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+function RegistrationPage() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: ''
+    });
 
-  const handleRegister = () => {
-    // Perform registration logic here
-    console.log('Registering user:', username, password);
-  };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
 
-  return (
-    <div className="register-container">
-      <h2>Register</h2>
-      <form>
-        <div className="input-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        axios.post('http://localhost:8080/user', formData)
+            .then(response => {
+                alert('Registration successful:', response.data);
+                // You can perform any necessary actions after successful registration here.
+            })
+            .catch(error => {
+                alert('Registration failed:', error);
+                // Handle registration error here.
+            });
+    };
+
+    return (
+        <div>
+            <h1>User Registration</h1>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required /><br /><br />
+
+                <label htmlFor="email">Email:</label>
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required /><br /><br />
+
+                <label htmlFor="password">Password:</label>
+                <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required /><br /><br />
+
+                <button type="submit">Register</button>
+            </form>
         </div>
-        <div className="input-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="button" onClick={handleRegister}>Register</button>
-      </form>
-    </div>
-  );
-};
+    );
+}
 
-export default Register;
+export default RegistrationPage;

@@ -1,11 +1,11 @@
 import React from 'react';
-import ImageEditor from './Component/Image';
-import Login from './Component/Login';
+import RegistrationPage from './Component/Register';
+import LoginPage from './Component/Login';
 const App = () => {
   return (
     <>
-    <Login />
-<ImageEditor />    
+    <RegistrationPage />
+    <LoginPage />
     </>
    
   );
