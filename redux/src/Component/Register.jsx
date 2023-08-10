@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function RegistrationPage() {
+  const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -22,11 +24,10 @@ function RegistrationPage() {
         axios.post('http://localhost:8080/user', formData)
             .then(response => {
                 alert('Registration successful:', response.data);
-                // You can perform any necessary actions after successful registration here.
+                navigate('/login')
             })
             .catch(error => {
                 alert('Registration failed:', error);
-                // Handle registration error here.
             });
     };
 

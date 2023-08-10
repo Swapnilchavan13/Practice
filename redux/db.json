@@ -16,6 +16,12 @@
       "email": "sh@gmail.com",
       "password": "1234",
       "id": 3
+    },
+    {
+      "name": "pasha",
+      "email": "p@gmail.com",
+      "password": "1234",
+      "id": 4
     }
   ],
   "login": [
