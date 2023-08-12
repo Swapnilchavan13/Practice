@@ -1,16 +1,18 @@
+// App.js
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import RegistrationPage from './Component/Register';
 import LoginPage from './Component/Login';
-import { Route, Routes } from 'react-router-dom';
+import PrivateRoute from './Component/PrivateRoute';
+import Product from './Component/Product';
+
 const App = () => {
   return (
-    <>
-     <Routes>  
-    <Route exact path='/' element={< RegistrationPage />}></Route>  
-    <Route exact path='/login' element={< LoginPage/>}></Route>  
-    </Routes>  
-    </>
-   
+    <Routes>
+      <Route path="/" element={<RegistrationPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <PrivateRoute path="/product" element={<Product />} />
+    </Routes>
   );
 };
 

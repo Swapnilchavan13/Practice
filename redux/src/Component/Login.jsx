@@ -28,6 +28,11 @@ function LoginPage() {
         }));
     };
 
+    const generateRandomToken = () => {
+        const token = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
+        localStorage.setItem('token', token);
+    };
+
     const handleLogin = (e) => {
         e.preventDefault();
 
@@ -36,6 +41,7 @@ function LoginPage() {
         if (!user || user.password !== formData.password) {
             setLoginStatus('Invalid email or password');
         } else {
+            generateRandomToken();
             setLoginStatus('Login successful');
         }
     };
