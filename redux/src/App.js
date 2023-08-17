@@ -1,9 +1,13 @@
+
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import RegistrationPage from './Component/Register';
 import LoginPage from './Component/Login';
 import Product from './Component/Product';
 import { PrivateRoute } from './Component/PrivateRoute';
+import ImageUploader from './Component/ImageUploader';
+import { Data } from './Component/Data';
+import GreyowlLogin from './Component/GreyowlLogin';
 
 const App = () => {
   const token = localStorage.getItem('token');
@@ -13,7 +17,7 @@ const App = () => {
   } 
    return (
     <>
-      <div>
+      {/* <div>
         <Link to="/">Register</Link>
         <Link to="/login">Login</Link>
         <Link to="/product">Product</Link>
@@ -23,7 +27,11 @@ const App = () => {
         <Route path="/" element={<RegistrationPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/product" element={<PrivateRoute> <Product /> </PrivateRoute>}></Route>
-      </Routes>
+      </Routes> */}
+      {/* <ImageUploader />
+       */}
+       {/* <Data/> */}
+       <GreyowlLogin />
     </>
   );
 };
