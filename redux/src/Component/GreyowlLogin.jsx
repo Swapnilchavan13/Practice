@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import '../Styles/login.css';
+import '../Styles/upload.css';
 
-function GreyowlLogin() {
+export const GreyowlLogin = () =>  {
   const [username, setUsername] = useState('Demo login');
   const [password, setPassword] = useState('1234');
 
@@ -38,5 +39,3 @@ function GreyowlLogin() {
     </form>
   );
 };
-
-export default GreyowlLogin;

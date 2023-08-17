@@ -7,7 +7,7 @@ import Product from './Component/Product';
 import { PrivateRoute } from './Component/PrivateRoute';
 import ImageUploader from './Component/ImageUploader';
 import { Data } from './Component/Data';
-import GreyowlLogin from './Component/GreyowlLogin';
+import { GreyowlLogin } from './Component/greyowllogin';
 
 const App = () => {
   const token = localStorage.getItem('token');
