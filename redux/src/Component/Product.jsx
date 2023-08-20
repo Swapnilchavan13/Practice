@@ -1,11 +1,14 @@
 import React from 'react'
 
 const Product = () => {
+  const click = ()=>{
+    alert("Button Clicked")
+  }
   return (
     <>
     <div>Product</div>
     <input type="text" name="" id="" />
-    <button>click</button>
+    <button onClick={click}>click</button>
     </>
   )
 }
