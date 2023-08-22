@@ -18,6 +18,7 @@ const Product = () => {
     <input type="text" name="" id="" onChange={handaleinputChange}/>
     <button onClick={click}>click</button>
     <div>
+      <h4>Typed Data</h4>
       <h2>{typedata}</h2>
     </div>
     </>
